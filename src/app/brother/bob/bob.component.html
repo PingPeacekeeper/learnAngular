@@ -1,0 +1,9 @@
+<div>
+    <h1>Bob inactive</h1>
+    <div *ngFor="let name of inactive;let i=index">
+        <span>{{name}}</span>
+        <button (click)="makeActive(i)">active</button>
+        
+
+    </div>
+</div>

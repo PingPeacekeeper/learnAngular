@@ -1,0 +1,12 @@
+<!--<p>test-animation works!</p>-->
+
+<button class="btn btn-primary" (click)="onAdd()"> add </button>
+<button (click)="onRemove()"> remove</button>
+<div @slide (@slide.start)="start($event)"*ngFor="let d of data">{{d}}</div>
+<p #paragraph></p>
+<ul>
+    <li #item>a</li>
+    <li #item>b</li>
+    <li #item>c</li>
+</ul>
+<input type="text" [(ngModel)]="inputValue">

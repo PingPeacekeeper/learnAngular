@@ -1,0 +1,7 @@
+<div>
+    <h1>Alice active</h1>
+    <div *ngFor="let name of active; let i=index">
+        <label>{{name}}</label>
+        <button (click)="makeInactive(i)">inactive</button>
+    </div>
+</div>

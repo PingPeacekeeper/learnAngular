@@ -1,0 +1,9 @@
+
+#box {
+    width: 200px;
+    height: 200px;
+    background: skyblue;
+    position: absolute;
+    left: 0;
+    top: 0;
+}

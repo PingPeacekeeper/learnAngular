@@ -1,0 +1,8 @@
+<p>server works!</p>
+<p>{{serverId}} is {{getServerStatus()}}</p>
+<button class="btn btn-primary" (click)="onClick()">start</button>
+<input type="text" [(ngModel)]="serverName">
+<p>{{serverName}}</p>
+<p *ngIf="serverName!==''">Name: {{serverName}}</p>
+<p *ngFor="let name of people;let i=index">{{i}}:{{name}}</p>
+<div>{{serviceData}}</div>

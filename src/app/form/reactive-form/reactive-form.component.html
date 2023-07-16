@@ -1,0 +1,78 @@
+<h1>Reactive Form</h1>
+<form [formGroup]="myForm"
+      (ngSubmit)="onSubmit()">
+    <div>
+        <label for="username">username</label>
+        <input type="text" id="username"
+               formControlName="username">
+        <div>{{myForm.get('username')?.errors|json}}</div>
+        <div *ngIf="myForm.get('username')?.invalid">invalid</div>
+        <div *ngIf="myForm.get('username')?.errors">
+            <span *ngIf="myForm.get('username')?.errors?.['noSpace']"> have space</span>
+            <span *ngIf="myForm.get('username')?.errors?.['beUnique']">must unique</span>
+        </div>
+        <div *ngIf="myForm.get('username')?.pending">pending</div>
+    </div>
+    <div>
+        <label for="email">email</label>
+        <input type="text" id="email"
+               formControlName="email">
+        <span *ngIf="myForm.get('email')?.invalid">enter email</span>
+    </div>
+    <div class="radio" *ngFor="let gender of genders">
+        <label>
+            <input type="radio" [value]="gender"
+                   formControlName="gender">{{ gender }}
+        </label>
+    </div>
+    <div formGroupName="address">
+        <div>
+            <label for="country">country</label>
+            <input type="text" id="country"
+                   formControlName="country">
+            <span *ngIf="myForm.get('address.country')!.status==='INVALID'">
+                enter country</span>
+        </div>
+        <div>
+            <label for="city">city</label>
+            <input type="text" id="city"
+                   formControlName="city">
+        </div>
+    </div>
+    <div>
+        <h2>Education</h2>
+
+        <div formArrayName="education">
+            <button type="button" (click)="onAddEdu()">add school</button>
+            <div *ngFor="let edu of education.controls;let i = index"
+                 [formGroupName]="i">
+                <label [for]="'schoolName'+i">school name</label>
+                <input type="text" [id]="'schoolName'+i"
+                       formControlName="schoolName">
+                <label for="degree">degree</label>
+                <input type="text" id="degree"
+                       formControlName="degree">
+                <button type="button" (click)="onDelEdu(i)">delete</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <button type="submit" (click)="onSubmit()">Submit</button>
+    <div *ngFor="let a of genders;let isEven=even">{{a + ' ' + isEven}}</div>
+</form>
+<hr>
+
+<form [formGroup]="contactForm" (ngSubmit)="submitContact()">
+    <div formArrayName="contacts">
+        <div *ngFor="let contact of contacts.controls;let i=index" [formGroupName]="i">
+            <input type="text" formControlName="name" required>
+            <input type="text" formControlName="phone">
+            <button type="button" (click)="deleteContact(i)">delete</button>
+        </div>
+    </div>
+
+    <button type="button" (click)="addContacts()">add</button>
+    <button type="submit" [disabled]="contactForm.invalid">Submit</button>
+</form>

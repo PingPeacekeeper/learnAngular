@@ -1,0 +1,15 @@
+<p>father works!</p>
+<app-son [msg]="msgForSon" #mark></app-son>
+<button (click)="msgForSon='update msg'">update msg</button>
+<!--<p>{{childSon.data}}</p>-->
+
+<button (click)="logData()">getAgain</button>
+
+<hr>
+<input type="text" #inputMark>
+<button (click)="testMark(inputMark.value)">mark</button>
+<div [ngSwitch]="value">
+    <p *ngSwitchCase=5>value = 5</p>
+    <p *ngSwitchCase="10">value = 10</p>
+    <p *ngSwitchDefault>value is Default</p>
+</div>

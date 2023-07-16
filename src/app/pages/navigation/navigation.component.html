@@ -1,0 +1,15 @@
+<div>
+    <a routerLink="/home">home</a>
+    <a routerLink="/about">about</a>
+</div>
+
+<div>
+    <a routerLink="/queryParam" [queryParams]="{
+        name:'alice',
+        age:18
+    }">test queryParam</a>
+</div>
+<div>
+    <a [routerLink]="['/pathVar',10,'red']">test path variable</a>
+</div>
+
